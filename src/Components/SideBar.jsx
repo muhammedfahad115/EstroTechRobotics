@@ -1,5 +1,6 @@
 import React, { useContext, useState } from 'react';
 import { MyContext } from '../Context/UserContext';
+import { Link } from 'react-router-dom';
 
 function SideBar() {
     const { text, setText, showSideBar } = useContext(MyContext);
@@ -14,7 +15,7 @@ function SideBar() {
                     }`}
                 >
                     <div className='cursor-pointer' onClick={() => setText('Dashboard')}><h1>Dashboard</h1></div>
-                    <div className='cursor-pointer' onClick={() => setText('Devices')}><h1>Devices</h1></div>
+                    <Link to={'/devices'}><div className='cursor-pointer' onClick={() => setText('Devices')}><h1>Devices</h1></div></Link>
                 </div>
             )}
         </>
