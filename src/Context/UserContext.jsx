@@ -4,10 +4,11 @@ const MyContext = createContext();
 
 function UserContext({children}) {
     const [text, setText] = useState('');
+    const [showSideBar, setShowSideBar] = useState(true);
 
   return (
     <>
-    <MyContext.Provider value={{text, setText}}>
+    <MyContext.Provider value={{text, setText, showSideBar, setShowSideBar}}>
         {children}
     </MyContext.Provider>
     </>
