@@ -1,10 +1,14 @@
-import React, {createContext, useState } from 'react'
+import React, {createContext, useEffect, useState } from 'react'
 
 const MyContext = createContext();
 
 function UserContext({children}) {
     const [text, setText] = useState('');
     const [showSideBar, setShowSideBar] = useState(true);
+
+    useEffect(() => {
+        localStorage.setItem('text', text);
+    }, [text]);
 
   return (
     <>

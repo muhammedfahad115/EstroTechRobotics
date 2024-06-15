@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import MenuIcon from '../assets/menuicon.png';
 import ArrowIcon from '../assets/rightArrowIcon.png';
 import { MyContext } from '../Context/UserContext';
@@ -7,6 +7,13 @@ import SideBar from './SideBar';
 function DashBoard() {
   const {text, setText} = useContext(MyContext);
   const {showSideBar, setShowSideBar} = useContext(MyContext);
+
+  useEffect(() => {
+    const checkText = localStorage.getItem('text');
+    if (checkText) {
+      setText(checkText);
+    }
+  }, []);
 
   const handleSideBar = () => {
     setShowSideBar(!showSideBar);

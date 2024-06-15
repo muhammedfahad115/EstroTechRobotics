@@ -14,7 +14,8 @@ function SideBar() {
                         showSideBar ? 'transform translate-x-0' : 'transform -translate-x-[100%]'
                     }`}
                 >
-                    <div className='cursor-pointer' onClick={() => setText('Dashboard')}><h1>Dashboard</h1></div>
+                    <Link to={'/'}><div className='cursor-pointer' onClick={() => setText('Dashboard')}><h1>Dashboard</h1></div></Link>
+                    
                     <Link to={'/devices'}><div className='cursor-pointer' onClick={() => setText('Devices')}><h1>Devices</h1></div></Link>
                 </div>
             )}
