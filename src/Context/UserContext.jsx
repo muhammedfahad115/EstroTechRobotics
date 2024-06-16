@@ -10,6 +10,7 @@ function UserContext({children}) {
         localStorage.setItem('text', text);
     }, [text]);
 
+
   return (
     <>
     <MyContext.Provider value={{text, setText, showSideBar, setShowSideBar}}>
