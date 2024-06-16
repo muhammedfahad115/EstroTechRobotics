@@ -10,7 +10,7 @@ function SideBar() {
         <>
             {slider && (
                 <div
-                    className={`w-full sm:w-[200px] h-[928px] p-6 flex flex-col  gap-y-3 bg-gray-100 border-[0.5px] fixed transition-transform duration-300 ${
+                    className={`w-[200px] h-[928px] p-6 flex flex-col  gap-y-3 bg-gray-100 border-[0.5px] fixed transition-transform duration-300 ${
                         showSideBar ? 'transform translate-x-0' : 'transform -translate-x-[100%] '
                     }`}
                 >
