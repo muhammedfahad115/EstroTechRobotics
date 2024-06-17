@@ -260,7 +260,7 @@ function DashBoard1() {
     return (
         <>
             <div className='flex flex-col gap-3'>
-                <div className='w-full border-[0.5px] h-auto rounded-[8px] px-3 py-2'>
+                <div className='w-full border-[0.5px]  h-auto rounded-[8px] px-3 py-2'>
                     <div><p>Daily Trend</p></div>
                     <div className='flex justify-center'>
                         <Line
@@ -270,8 +270,8 @@ function DashBoard1() {
                         />
                     </div>
                 </div>
-                <div className='sm:flex gap-3'>
-                    <div className='w-[440px] flex flex-col gap-4 h-[400px] rounded-[8px]'>
+                <div className='flex flex-col sm:flex-row gap-3'>
+                    <div className='w-full flex flex-col gap-4 h-[400px] rounded-[8px]'>
                         <div className='w-full h-[122.67px] px-3 py-2 border-[0.5px] rounded-[8px]'>
                             <div className='flex h-[15px] items-center gap-2'>
                                 <div className='w-[16px] h-[15px] bg-[#6975FF]'></div>
@@ -324,7 +324,7 @@ function DashBoard1() {
                             </div>
                         </div>
                     </div>
-                    <div className='w-[440px] h-[400px] border-[0.5px] rounded-[8px] flex flex-col justify-center'>
+                    <div className='w-full h-[400px] border-[0.5px] rounded-[8px] flex flex-col justify-center'>
                         <div className='px-5 py-3'>
                             <p>Device Availability</p>
                         </div>
@@ -332,7 +332,7 @@ function DashBoard1() {
                             <Doughnut data={doughnutChartData} options={doughnutOptions} />
                         </div>
                     </div>
-                    <div className='w-[440px] h-[400px] border-[0.5px] overflow-hidden overflow-y-scroll scrollBar rounded-[8px]'>
+                    <div className='w-full h-[400px] border-[0.5px] overflow-hidden overflow-y-scroll scrollBar rounded-[8px]'>
                         <div className='px-5 py-3'>
                             <p>Offline Devices</p>
                             <div className='flex flex-col mt-3 gap-3'>

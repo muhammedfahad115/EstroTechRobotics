@@ -6,9 +6,11 @@ import battery from '../assets/battery.png';
 import pin from '../assets/pin.png';
 import sim from '../assets/sim.png';
 import { Link } from 'react-router-dom';
+import { MyContext } from '../Context/UserContext';
 
 
 function Devices() {
+    const {showSideBar, setShowSideBar} = useContext(MyContext);
 
     return (
         <>
@@ -19,7 +21,7 @@ function Devices() {
 
                     return (
                         <Link key={deviceNameNoSpaces} to={`/${deviceNameNoSpaces}`}>
-                            <div className="border-[0.5px] w-[200px] sm:w-[300px] md:w-[350px] p-2 flex flex-col gap-2 cursor-pointer rounded-lg ">
+                            <div className={`border-[0.5px] transition-all duration-100  ${showSideBar ? 'w-[170px]' : 'w-[275px]'} md:w-[396px] p-2 flex flex-col gap-2 cursor-pointer rounded-lg `}>
                                 <div className="flex justify-between items-center">
                                     <h1>{item.deviceName}</h1>
                                     <div className="flex gap-1">

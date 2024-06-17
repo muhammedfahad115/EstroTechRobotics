@@ -246,7 +246,61 @@ function Device1() {
                     </div>
                 </div>
 
-                <div></div>
+                <div>
+                <div className='w-full flex flex-col   gap-4 sm:flex-row rounded-[8px]'>
+                        <div className='w-full h-[122.67px] px-3 py-2 border-[0.5px] rounded-[8px]'>
+                            <div className='flex h-[15px] items-center gap-2'>
+                                <div className='w-[16px] h-[15px] bg-[#6975FF]'></div>
+                                <div>Data-0</div>
+                            </div>
+                            <div>
+                                <div className='flex justify-end'><h1>{percentageOfData0}%</h1></div>
+                                <div className='bg-[#D9D9D9] p-0'>
+                                    <div style={{
+                                        width: `${percentageOfData0}%`,
+                                        height: '40px',
+                                        backgroundColor: '#6975FF',
+                                        transition: 'width 1s ease-in-out'
+                                    }}></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div className='w-full h-[122.67px] px-3 py-2 border-[0.5px] rounded-[8px]'>
+                            <div className='flex h-[15px] items-center gap-2'>
+                                <div className='w-[16px] h-[15px] bg-[#64BDC6]'></div>
+                                <div>Data-1</div>
+                            </div>
+                            <div>
+                                <div className='flex justify-end'><h1>{percentageOfData1}%</h1></div>
+                                <div className='bg-[#D9D9D9] p-0'>
+                                    <div style={{
+                                        width: `${percentageOfData1}%`,
+                                        height: '40px',
+                                        backgroundColor: '#64BDC6',
+                                        transition: 'width 1s ease-in-out'
+                                    }}></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div className='w-full h-[122.67px] px-3 py-2 border-[0.5px] rounded-[8px]'>
+                            <div className='flex h-[15px] items-center gap-2'>
+                                <div className='w-[16px] h-[15px] bg-[#084FD7]'></div>
+                                <div>Data-2</div>
+                            </div>
+                            <div>
+                                <div className='flex justify-end'><h1>{percentageOfData2ToTarget}%</h1></div>
+                                <div className='bg-[#D9D9D9] p-0'>
+                                    <div style={{
+                                        width: `${percentageOfData2ToTarget}%`,
+                                        height: '40px',
+                                        backgroundColor: '#084FD7',
+                                        transition: 'width 1s ease-in-out'
+                                    }}></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
                 <div></div>
             </div>
         </>
