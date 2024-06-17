@@ -161,11 +161,17 @@ function Device1() {
         },
         scales: {
             x: {
+                border: {
+                    color : 'black'
+                },
                 grid: {
                     display: false,
                     drawBorder: false,
                     drawTicks: false,
                 },
+                ticks: {
+                    padding: 20
+                }
             },
             y: {
                 border: {
@@ -195,34 +201,34 @@ function Device1() {
 
     return (
         <>
-            <div className='w-full h-full flex flex-col gap-5 '>
+            <div className='w-full h-full flex flex-col gap-2 '>
                 <div className='w-full flex  p-0  flex-col gap-2  md:flex-row'>
-                    <div className='border-[0.5px]  sm:w-[256px]  h-auto p-[10px] flex flex-col gap-2 rounded-[8px]'>
+                    <div className='border-[0.5px]  sm:w-[256px]  h-auto p-[10px] flex flex-col justify-between rounded-[8px]'>
                         <h1>{device.deviceName}</h1>
                         <div className='flex items-center gap-2'>
                             <div className={`w-3 h-3 rounded-full ${isOnline ? 'bg-green-500' : 'bg-red-500'}`}></div>
                             <h1 className='text-gray-500 text-xs'>{isOnline ? 'Online' : 'Offline'}</h1>
                         </div>
-                        <h1 className='text-gray-500 text-sm'>Last connected at {formatDate(device.connectionStatus.connected)}</h1>
+                        <h1 className='text-gray-500 text-xs'>Last connected at {formatDate(device.connectionStatus.connected)}</h1>
                     </div>
-                    <div className='border-[0.5px] sm:w-[256px] h-auto p-[10px] flex flex-col gap-2 rounded-[8px]'>
+                    <div className='border-[0.5px] sm:w-[256px] h-auto p-[10px] flex flex-col justify-between rounded-[8px]'>
                         <div className='flex items-center gap-1'><img className='w-[13px] h-[12px] opacity-50' src={pin} alt="pin" /><h1 className='text-gray-500'>Location</h1></div>
                         <h1 className='text-sm text-gray-500'>{device.location.building},{device.location.city},{device.location.state}</h1>
                         <h1 className='text-sm text-gray-500'>state,country,pincode</h1>
                     </div>
-                    <div className='border-[0.5px] sm:w-[256px] h-auto p-[10px] flex flex-col gap-2 rounded-[8px]'>
+                    <div className='border-[0.5px] sm:w-[256px] h-auto p-[10px] flex flex-col justify-between rounded-[8px]'>
                         <div className='flex items-center gap-1'><img className='w-[13px] h-[12px] ' src={sim} alt="sim" /><h1 className='text-gray-500'>Cell Info</h1></div>
                         <h1 className='text-sm text-gray-500'>{device.hw_data.sim.operator}</h1>
                         <h1 className='text-sm text-gray-500'>{device.hw_data.sim.signalStrength}</h1>
                     </div>
-                    <div className='border-[0.5px] sm:w-[256px] h-auto p-[10px] flex flex-col gap-2 rounded-[8px]'>
+                    <div className='border-[0.5px] sm:w-[256px] h-auto p-[10px] flex flex-col justify-between rounded-[8px]'>
                         <div className='flex items-center gap-1'><img className='w-[13px] h-[12px] rotate-90 ' src={usb} alt="usb" /><h1 className='text-gray-500'>Usb Devices</h1></div>
                         {devices.map((device,index) => (
                             <div key={index} className='flex items-center gap-2'><div className='w-3 h-3 rounded-full bg-green-500'></div><h1 className='text-sm text-gray-500'>{device}</h1></div>
 
                         ))}
                     </div>
-                    <div className='border-[0.5px] sm:w-[256px] h-auto p-[10px] flex flex-col gap-2 rounded-[8px]'>
+                    <div className='border-[0.5px] sm:w-[256px] h-auto p-[10px] flex flex-col justify-between rounded-[8px]'>
                         <div className='flex items-center gap-1'><img className='w-[13px] h-[12px]  ' src={battery} alt="battery" /><h1 className='text-gray-500'>Battery Info</h1></div>
                         <h1 className='text-sm text-gray-500'>{device.hw_data.battery.percentage}</h1>
                         <h1 className='text-sm text-gray-500'>{device.hw_data.battery.temperature}</h1>

@@ -203,7 +203,7 @@ function Device2() {
                             <div className={`w-3 h-3 rounded-full ${isOnline ? 'bg-green-500' : 'bg-red-500'}`}></div>
                             <h1 className='text-gray-500 text-xs'>{isOnline ? 'Online' : 'Offline'}</h1>
                         </div>
-                        <h1 className='text-gray-500 text-sm'>Last connected at {formatDate(device.connectionStatus.connected)}</h1>
+                        <h1 className='text-gray-500 text-xs'>Last connected at {formatDate(device.connectionStatus.connected)}</h1>
                     </div>
                     <div className='border-[0.5px] sm:w-[256px] h-auto p-[10px] flex flex-col gap-2 rounded-[8px]'>
                         <div className='flex items-center gap-1'><img className='w-[13px] h-[12px] opacity-50' src={pin} alt="pin" /><h1 className='text-gray-500'>Location</h1></div>

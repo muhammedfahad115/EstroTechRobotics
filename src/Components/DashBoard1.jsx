@@ -217,11 +217,17 @@ function DashBoard1() {
         },
         scales: {
             x: {
+                border: {
+                    color : 'black'
+                },
                 grid: {
                     display: false,
                     drawBorder: false,
                     drawTicks: false,
                 },
+                ticks: {
+                    padding: 20
+                }
             },
             y: {
                 border: {

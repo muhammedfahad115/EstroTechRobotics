@@ -1,10 +1,12 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { MyContext } from '../Context/UserContext';
 import { Link } from 'react-router-dom';
 
 function SideBar() {
     const { text, setText, showSideBar } = useContext(MyContext);
     const [slider, setSlider] = useState(true);
+
+
 
     return (
         <>
