@@ -33,8 +33,8 @@ function Header() {
     </div>
     <div className='h-12 border-[0.5px] px-6 flex items-center sticky w-full   top-12 gap-5'>
       <button onClick={handleSideBar}><img className='w-5 h-5' src={MenuIcon}/></button>
-      <h1>Dashboard</h1>
-      <div><h1 className='flex gap-2 items-center text-sm sm:text-base'>{text ? <div className='flex items-center'><img className='w-5 h-5' src={ArrowIcon}/><h1>{text}</h1></div> : ''}{subText ? <div className='flex items-center'><img className='w-5 h-5' src={ArrowIcon}/><h1 className='text-xs sm:text-sm'>{subText}</h1></div> : ''}</h1></div>
+      <Link to={'/'}><h1>Dashboard</h1></Link>
+      <div><h1 className='flex gap-2 items-center text-sm sm:text-base'>{text ? <div className='flex items-center'><img className='w-5 h-5' src={ArrowIcon}/><Link to={`/${text}`}><h1>{text}</h1></Link></div> : ''}{subText ? <div className='flex items-center'><img className='w-5 h-5' src={ArrowIcon}/><h1 className='text-xs sm:text-sm'>{subText}</h1></div> : ''}</h1></div>
     </div>
     </div>
     </>
