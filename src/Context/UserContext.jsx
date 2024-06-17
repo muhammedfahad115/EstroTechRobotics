@@ -5,6 +5,8 @@ const MyContext = createContext();
 function UserContext({children}) {
     const [text, setText] = useState('');
     const [showSideBar, setShowSideBar] = useState(true);
+    const [subText, setSubText] = useState('');
+    
 
     useEffect(() => {
         localStorage.setItem('text', text);
@@ -13,7 +15,7 @@ function UserContext({children}) {
 
   return (
     <>
-    <MyContext.Provider value={{text, setText, showSideBar, setShowSideBar}}>
+    <MyContext.Provider value={{text, setText, showSideBar, setShowSideBar, subText, setSubText}}>
         {children}
     </MyContext.Provider>
     </>

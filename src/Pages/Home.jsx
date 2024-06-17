@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React, { useContext, useEffect } from 'react'
 import DashBoard from '../Components/DashBoard'
 import Header from '../Components/Header'
 import { Outlet } from 'react-router-dom'
@@ -10,7 +10,7 @@ function Home() {
     <>
     <Header/>
     <DashBoard/>
-    <div className={`transition-all duration-150 ${showSideBar ? 'ml-[200px] p-6' : 'ml-0 p-6'}`}><Outlet/></div>
+    <div className={`transition-all duration-150 pt-28  ${showSideBar ? 'ml-[200px] p-6  mt-2' : 'ml-0 p-6'}`}><Outlet/></div>
     </>
   )
 }

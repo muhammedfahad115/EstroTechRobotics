@@ -189,7 +189,18 @@ function DashBoard1() {
                 labels: {
                     usePointStyle: true,
                     pointStyle: 'rect',
-                    padding: 40
+                    padding: 40,
+                    generateLabels: (chart) => {
+                        const { data } = chart;
+                        return data.datasets.map((dataset, i) => ({
+                            text: dataset.label,
+                            fillStyle: dataset.borderColor,
+                            strokeStyle: dataset.borderColor,
+                            pointStyle: 'rect',
+                            hidden: !chart.isDatasetVisible(i),
+                            datasetIndex: i
+                        }));
+                    }
                 }
             },
             tooltip: {
@@ -221,11 +232,12 @@ function DashBoard1() {
                         if (context.tick.value % 20 === 0) {
                             return '#e0e0e0';
                         }
-                        return 'transparent';
+                        return 'transparent'    
                     },
                 },
                 ticks: {
                     stepSize: 20,
+                    padding: 20,
                     callback: function (value) {
                         return value;
                     }
@@ -233,6 +245,7 @@ function DashBoard1() {
             }
         },
     };
+    
 
 
     return (
@@ -240,7 +253,7 @@ function DashBoard1() {
             <div className='flex flex-col gap-3'>
                 <div className='w-full border-[0.5px] h-auto rounded-[8px] px-3 py-2'>
                     <div><p>Daily Trend</p></div>
-                    <div>
+                    <div className='flex justify-center'>
                         <Line
                             data={lineChartData}
                             options={lineChartOptions}

@@ -6,6 +6,8 @@ import UserContext from '../Context/UserContext'
 import Profile from '../Components/Profile'
 import Devices from '../Components/Devices'
 import DashBoard1 from '../Components/DashBoard1'
+import Device1 from '../Components/Device1'
+import Device2 from '../Components/Device2'
 
 function UserRoutes() {
     return (
@@ -17,6 +19,8 @@ function UserRoutes() {
                     <Route path='/' element={<DashBoard1/>}></Route>
                         <Route path='profile' element={<Profile />}></Route>
                         <Route path='devices' element={<Devices />}></Route>
+                        <Route path='device01' element={<Device1/>}></Route>
+                        <Route path='device02' element={<Device2/>}></Route>
                     </Route>
                 </Routes>
             </UserContext>
