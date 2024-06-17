@@ -10,7 +10,7 @@ function Home() {
     <>
     <Header/>
     <DashBoard/>
-    <div className={`transition-all duration-150 pt-28  ${showSideBar ? 'ml-[200px] p-6  mt-2' : 'ml-0 p-6'}`}><Outlet/></div>
+    <div className={`transition-all duration-150 pt-28  ${showSideBar ? ' ml-[90px] sm:ml-[150px] md:ml-[200px] p-6  mt-2' : 'ml-0 p-6'}`}><Outlet/></div>
     </>
   )
 }

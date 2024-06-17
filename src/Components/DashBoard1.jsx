@@ -224,6 +224,9 @@ function DashBoard1() {
                 },
             },
             y: {
+                border: {
+                    display: false
+                },
                 grid: {
                     display: true,
                     drawBorder: false,
@@ -240,7 +243,7 @@ function DashBoard1() {
                     padding: 20,
                     callback: function (value) {
                         return value;
-                    }
+                    },
                 }
             }
         },

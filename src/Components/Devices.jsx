@@ -16,7 +16,7 @@ function Devices() {
                     const deviceNameNoSpaces = item.deviceName.replace(/\s+/g, '').toLowerCase();
                     return (
                         <Link key={deviceNameNoSpaces} to={`/${deviceNameNoSpaces}`}>
-                            <div className="border-2 w-[350px] p-2 cursor-pointer rounded-lg ">
+                            <div className="border-2 w-[200px] sm:w-[300px] md:w-[350px] p-2 cursor-pointer rounded-lg ">
                                 <div className="flex justify-between items-center">
                                     <h1>{item.deviceName}</h1>
                                     <div className="flex gap-1">
