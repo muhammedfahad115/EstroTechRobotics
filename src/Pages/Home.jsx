@@ -5,6 +5,11 @@ import { Outlet } from 'react-router-dom'
 import { MyContext } from '../Context/UserContext'
 
 function Home() {
+  
+  useEffect(() => {
+    localStorage.removeItem('previousPage');
+  },[]);
+
   const {showSideBar} = useContext(MyContext)
   return (
     <>
