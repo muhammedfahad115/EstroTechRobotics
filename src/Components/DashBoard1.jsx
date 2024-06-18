@@ -152,6 +152,7 @@ function DashBoard1() {
                 tension: 0,
                 pointRadius: 0,
                 pointHoverRadius: 0,
+                borderWidth: 2,
                 showLine: true
             },
             {
@@ -163,6 +164,7 @@ function DashBoard1() {
                 tension: 0,
                 pointRadius: 0,
                 pointHoverRadius: 0,
+                borderWidth: 2,
                 showLine: true
 
             },
@@ -175,6 +177,7 @@ function DashBoard1() {
                 tension: 0,
                 pointRadius: 0,
                 pointHoverRadius: 0,
+                borderWidth: 2,
                 showLine: true,
 
             }
@@ -212,13 +215,13 @@ function DashBoard1() {
         elements: {
             point: {
                 radius: 0,
-                hoverRadius: 0
+                hoverRadius: 0,
             }
         },
         scales: {
             x: {
                 border: {
-                    color : 'black'
+                    color : 'black',
                 },
                 grid: {
                     display: false,

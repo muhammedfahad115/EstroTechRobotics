@@ -6,7 +6,7 @@ import battery from '../assets/battery.png';
 import pin from '../assets/pin.png';
 import sim from '../assets/sim.png';
 import deviceData from '../Api/Data.json';
-import { Line } from 'react-chartjs-2';
+import { Line, Bar } from 'react-chartjs-2';
 import data0 from '../Api/Data0.json';
 import data1 from '../Api/Data1.json';
 import {
@@ -18,9 +18,11 @@ import {
     LinearScale,
     PointElement,
     LineElement,
+    BarElement,
     Title,
     Filler
 } from 'chart.js';
+
 ChartJS.register(
     ArcElement,
     Tooltip,
@@ -29,9 +31,11 @@ ChartJS.register(
     LinearScale,
     PointElement,
     LineElement,
+    BarElement,
     Title,
     Filler
 );
+
 const TARGET_VALUE = 100;
 
 function Device1() {
@@ -44,7 +48,6 @@ function Device1() {
         setSubText('Device01');
         const data0Sum = data0.reduce((acc, curr) => acc + curr.data, 0);
         const data1Sum = data1.reduce((acc, curr) => acc + curr.data, 0);
-        const data2Sum = data0Sum + data1Sum;
         const totalData = data0Sum + data1Sum;
 
         const percentageOfData0Calc = totalData ? ((data0Sum / totalData) * 100).toFixed(2) : 0;
@@ -56,22 +59,14 @@ function Device1() {
             setPercentageOfData1(percentageOfData1Calc);
             setPercentageOfData2ToTarget(percentageOfData2ToTargetCalc);
         }, 100);
+
         return () => {
             setSubText('');
         }
-    }, []);
-
+    }, [setSubText]);
 
     const device = deviceData.find(item => item.deviceName === 'Device 01');
-
-    const devices = deviceData.map((device) => {
-        return (
-            device.deviceName
-        )
-    })
-
-    console.log(devices);
-
+    const devices = deviceData.map(device => device.deviceName);
 
     const formatDate = (dateString) => {
         const date = new Date(dateString);
@@ -84,8 +79,7 @@ function Device1() {
     const isOnline = new Date(device.connectionStatus.connected) > new Date(device.connectionStatus.disconnected);
 
     const lineChartData = {
-        labels: Array.from({ length: 24 }, (_, i) => `${i}`)
-        ,
+        labels: Array.from({ length: 24 }, (_, i) => `${i}`),
         datasets: [
             {
                 label: 'Data 0',
@@ -96,6 +90,7 @@ function Device1() {
                 tension: 0,
                 pointRadius: 0,
                 pointHoverRadius: 0,
+                borderWidth: 2,
                 showLine: true
             },
             {
@@ -107,8 +102,8 @@ function Device1() {
                 tension: 0,
                 pointRadius: 0,
                 pointHoverRadius: 0,
+                borderWidth: 2,
                 showLine: true
-
             },
             {
                 label: 'Data 2',
@@ -119,8 +114,8 @@ function Device1() {
                 tension: 0,
                 pointRadius: 0,
                 pointHoverRadius: 0,
+                borderWidth: 2,
                 showLine: true,
-
             }
         ]
     };
@@ -162,7 +157,7 @@ function Device1() {
         scales: {
             x: {
                 border: {
-                    color : 'black'
+                    color: 'black'
                 },
                 grid: {
                     display: false,
@@ -199,11 +194,72 @@ function Device1() {
         },
     };
 
+    const barChartData = {
+        // labels: ['status'],
+        
+        datasets: [
+            {
+                label: 'Online',
+                data: [
+                    {x : [0,1] , y : 'status'},
+                    {x : [3,0] , y : 'status'},
+                ],
+                backgroundColor: '#3be168',
+                borderColor: '#3be168',
+                borderWidth: 1
+            },
+            {
+                label: 'Offline',
+                data: [
+                    {x : [23,3] , y : 'status'},
+                ],
+                backgroundColor: '#dc3031',
+                borderColor: '#dc3031',
+                borderWidth: 1
+            }
+        ]
+    };
+    
+
+    const barChartOptions = {
+        responsive: true,
+        aspectRatio : 10 ,
+        indexAxis : 'y',
+        plugins: {
+            legend: {
+                display: false
+            }
+        },
+        scales : {
+            y : {
+                border : {
+                    display : false
+                },
+                beginAtZero : true,
+                stacked : true,
+                grid : {
+                    display : false
+                },
+                ticks : {
+                    display : false
+                }
+            },
+            x : {
+                border : {
+                    color : 'black'
+                },
+                grid : {
+                    display : false
+                },
+            }
+        }
+    };
+
     return (
         <>
-            <div className='w-full h-full flex flex-col gap-2 '>
-                <div className='w-full flex  p-0  flex-col gap-2  md:flex-row'>
-                    <div className='border-[0.5px]  sm:w-[256px]  h-auto p-[10px] flex flex-col justify-between rounded-[8px]'>
+            <div className='w-full h-full flex flex-col gap-2'>
+                <div className='w-full flex p-0 flex-col gap-2 md:flex-row'>
+                    <div className='border-[0.5px] sm:w-[256px] h-auto p-[10px] flex flex-col justify-between rounded-[8px]'>
                         <h1>{device.deviceName}</h1>
                         <div className='flex items-center gap-2'>
                             <div className={`w-3 h-3 rounded-full ${isOnline ? 'bg-green-500' : 'bg-red-500'}`}></div>
@@ -217,25 +273,24 @@ function Device1() {
                         <h1 className='text-sm text-gray-500'>state,country,pincode</h1>
                     </div>
                     <div className='border-[0.5px] sm:w-[256px] h-auto p-[10px] flex flex-col justify-between rounded-[8px]'>
-                        <div className='flex items-center gap-1'><img className='w-[13px] h-[12px] ' src={sim} alt="sim" /><h1 className='text-gray-500'>Cell Info</h1></div>
+                        <div className='flex items-center gap-1'><img className='w-[13px] h-[12px]' src={sim} alt="sim" /><h1 className='text-gray-500'>Cell Info</h1></div>
                         <h1 className='text-sm text-gray-500'>{device.hw_data.sim.operator}</h1>
                         <h1 className='text-sm text-gray-500'>{device.hw_data.sim.signalStrength}</h1>
                     </div>
                     <div className='border-[0.5px] sm:w-[256px] h-auto p-[10px] flex flex-col justify-between rounded-[8px]'>
-                        <div className='flex items-center gap-1'><img className='w-[13px] h-[12px] rotate-90 ' src={usb} alt="usb" /><h1 className='text-gray-500'>Usb Devices</h1></div>
-                        {devices.map((device,index) => (
+                        <div className='flex items-center gap-1'><img className='w-[13px] h-[12px] rotate-90' src={usb} alt="usb" /><h1 className='text-gray-500'>Usb Devices</h1></div>
+                        {devices.map((device, index) => (
                             <div key={index} className='flex items-center gap-2'><div className='w-3 h-3 rounded-full bg-green-500'></div><h1 className='text-sm text-gray-500'>{device}</h1></div>
-
                         ))}
                     </div>
                     <div className='border-[0.5px] sm:w-[256px] h-auto p-[10px] flex flex-col justify-between rounded-[8px]'>
-                        <div className='flex items-center gap-1'><img className='w-[13px] h-[12px]  ' src={battery} alt="battery" /><h1 className='text-gray-500'>Battery Info</h1></div>
+                        <div className='flex items-center gap-1'><img className='w-[13px] h-[12px]' src={battery} alt="battery" /><h1 className='text-gray-500'>Battery Info</h1></div>
                         <h1 className='text-sm text-gray-500'>{device.hw_data.battery.percentage}</h1>
                         <h1 className='text-sm text-gray-500'>{device.hw_data.battery.temperature}</h1>
                     </div>
                 </div>
 
-                <div className=' border-[0.5px]  rounded-[8px] px-3 py-2'>
+                <div className='border-[0.5px] rounded-[8px] px-3 py-2'>
                     <div><p>Daily Trend</p></div>
                     <div className='flex justify-center'>
                         <Line
@@ -247,7 +302,7 @@ function Device1() {
                 </div>
 
                 <div>
-                <div className='w-full flex flex-col   gap-4 sm:flex-row rounded-[8px]'>
+                    <div className='w-full flex flex-col gap-4 sm:flex-row rounded-[8px]'>
                         <div className='w-full h-[122.67px] px-3 py-2 border-[0.5px] rounded-[8px]'>
                             <div className='flex h-[15px] items-center gap-2'>
                                 <div className='w-[16px] h-[15px] bg-[#6975FF]'></div>
@@ -301,7 +356,13 @@ function Device1() {
                         </div>
                     </div>
                 </div>
-                <div></div>
+                <div>
+                    <Bar
+                        data={barChartData}
+                        options={barChartOptions}
+                        height={100}
+                    />
+                </div>
             </div>
         </>
     );

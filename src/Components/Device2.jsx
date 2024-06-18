@@ -6,7 +6,7 @@ import battery from '../assets/battery.png';
 import pin from '../assets/pin.png';
 import sim from '../assets/sim.png';
 import deviceData from '../Api/Data.json';
-import { Line } from 'react-chartjs-2';
+import { Line, Bar } from 'react-chartjs-2';
 import data0 from '../Api/Data0.json';
 import data1 from '../Api/Data1.json';
 import {
@@ -19,7 +19,8 @@ import {
     PointElement,
     LineElement,
     Title,
-    Filler
+    Filler,
+    BarElement,
 } from 'chart.js';
 ChartJS.register(
     ArcElement,
@@ -29,6 +30,7 @@ ChartJS.register(
     LinearScale,
     PointElement,
     LineElement,
+    BarElement,
     Title,
     Filler
 );
@@ -96,6 +98,7 @@ function Device2() {
                 tension: 0,
                 pointRadius: 0,
                 pointHoverRadius: 0,
+                borderWidth: 2,
                 showLine: true
             },
             {
@@ -107,6 +110,7 @@ function Device2() {
                 tension: 0,
                 pointRadius: 0,
                 pointHoverRadius: 0,
+                borderWidth: 2,
                 showLine: true
 
             },
@@ -119,6 +123,7 @@ function Device2() {
                 tension: 0,
                 pointRadius: 0,
                 pointHoverRadius: 0,
+                borderWidth: 2,
                 showLine: true,
 
             }
@@ -191,6 +196,69 @@ function Device2() {
                 }
             }
         },
+    };
+
+    
+    const barChartData = {
+        // labels: ['status'],
+        
+        datasets: [
+            {
+                label: 'Online',
+                data: [
+                    {x : [0,2] , y : 'status'},
+                    {x : [3,0] , y : 'status'},
+                ],
+                backgroundColor: '#3be168',
+                borderColor: '#3be168',
+                borderWidth: 1
+            },
+            {
+                label: 'Offline',
+                data: [
+                    {x : [23,3] , y : 'status'},
+                ],
+                backgroundColor: '#dc3031',
+                borderColor: '#dc3031',
+                borderWidth: 1,
+                display: false
+            }
+        ]
+    };
+    
+
+    const barChartOptions = {
+        responsive: true,
+        aspectRatio : 10 ,
+        indexAxis : 'y',
+        plugins: {
+            legend: {
+                display: false
+            }
+        },
+        scales : {
+            y : {
+                border : {
+                    display : false
+                },
+                beginAtZero : true,
+                stacked : true,
+                grid : {
+                    display : false
+                },
+                ticks : {
+                    display : false
+                }
+            },
+            x : {
+                border : {
+                    color : 'black'
+                },
+                grid : {
+                    display : false
+                },
+            }
+        }
     };
 
     return (
@@ -295,7 +363,14 @@ function Device2() {
                         </div>
                     </div>
                 </div>
-                <div></div>
+                <div className='w-full  px-3 py-2 border-[0.5px] rounded-[8px] '>
+                    <div><h1>Uptime metrics</h1></div>
+                    <Bar
+                        data={barChartData}
+                        options={barChartOptions}
+                        height={100}
+                    />
+                </div>
             </div>
         </>
     );

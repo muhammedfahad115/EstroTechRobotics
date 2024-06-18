@@ -27,7 +27,7 @@ function Header() {
     <div className='h-12 flex justify-between border-[0.5px] px-6 items-center sticky top-0 w-full '>
         <div><h1 className='text-lg font-bold'>Panel0</h1></div>
         <div className='flex gap-4'>
-            <div><Link to='/profile'><img className='w-9 h-9 cursor-pointer active:scale-95' title='Profile' onClick={() => setText('Profile')} src={UserIcon}/></Link></div>
+            <div><Link to='/profile'><img className='w-9 h-9 cursor-pointer active:scale-95' title='Profile' onClick={() => setText('User Details')} src={UserIcon}/></Link></div>
             <div><img className='w-9 h-9 cursor-pointer active:scale-95' title='Logout' src={LogoutIcon}/></div>
         </div>
     </div>

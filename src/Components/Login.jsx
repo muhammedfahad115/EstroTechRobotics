@@ -23,6 +23,8 @@ function Login() {
             setNoOfErrors(noOfErrors + 1);
             return;
         }
+        localStorage.setItem('email', email);
+        localStorage.setItem('password', password);
         navigate('/');
     };
 
